@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Oswald, Inter, JetBrains_Mono } from "next/font/google";
+import { Oswald, Inter, JetBrains_Mono, Geist } from "next/font/google";
 import "./globals.css";
+import { cn } from "@/lib/utils";
 
 const oswald = Oswald({
   variable: "--font-display",
@@ -8,11 +9,7 @@ const oswald = Oswald({
   weight: ["400", "500", "600", "700"],
 });
 
-const inter = Inter({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
@@ -39,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${oswald.variable} ${inter.variable} ${jetbrainsMono.variable}`}
+      className={cn(oswald.variable, jetbrainsMono.variable, "font-sans", geist.variable)}
     >
       <body className="min-h-screen flex flex-col antialiased">{children}</body>
     </html>
